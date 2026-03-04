@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Honours - Dai Yun's Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at 0% 0%, #ffe9ff 0, #f7d9ff 30%, #f1c5ff 55%, #e6b2ff 80%, #d79cff 100%);
+      min-height: 100vh;
+      color: #4a2a72;
+      padding: 40px 20px;
+    }
+
+    .portfolio-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 40px;
+      padding: 50px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 18px 40px rgba(126, 81, 167, 0.25);
+      overflow: hidden;
+    }
+
+    .portfolio-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 32px;
+      border: 2px dashed rgba(171, 120, 220, 0.7);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 返回按钮样式 */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #c46af0, #9350ea);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 6px 15px rgba(143, 73, 212, 0.3);
+      margin-bottom: 30px;
+      transition: all 0.2s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(143, 73, 212, 0.4);
+    }
+
+    .back-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .header-portfolio {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #b352d8;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* 荣誉卡片样式 */
+    .honours-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .honour-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(150, 92, 200, 0.18);
+      transition: all 0.3s ease;
+    }
+
+    .honour-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(150, 92, 200, 0.25);
+    }
+
+    .honour-card__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #7c3ac9;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e89aff;
+      padding-bottom: 8px;
+    }
+
+    .honour-card__date {
+      font-size: 14px;
+      color: #8b6da7;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .honour-card__desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #5c4876;
+      margin-bottom: 20px;
+    }
+
+    /* 证书展示样式 */
+    .certificate-box {
+      width: 100%;
+      height: 200px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #fdd0ff, #f4bfff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #fff;
+      box-shadow: 0 8px 25px rgba(150, 92, 200, 0.15);
+    }
+
+    .certificate-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    .certificate-box:hover img {
+      opacity: 1;
+    }
+
+    /* 响应式适配（与主页面保持一致） */
+    @media (max-width: 992px) {
+      .portfolio-wrapper {
+        padding: 35px;
+        border-radius: 30px;
+      }
+
+      .header-portfolio {
+        font-size: 48px;
+        margin-bottom: 25px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .portfolio-wrapper {
+        padding: 25px 20px;
+        border-radius: 20px;
+      }
+
+      .portfolio-wrapper::before {
+        inset: 8px;
+        border-radius: 16px;
+      }
+
+      .header-portfolio {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .honours-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .honour-card {
+        padding: 20px;
+      }
+
+      .certificate-box {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="portfolio-wrapper">
+    <!-- 返回按钮 -->
+    <a href="index.html" class="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Back to Portfolio
+    </a>
+
+    <!-- 页面标题 -->
+    <div class="header-portfolio">Honours & Scholarships</div>
+
+    <!-- 荣誉卡片列表 -->
+    <div class="honours-cards">
+      <!-- 荣誉1 -->
+      <div class="honour-card">
+        <h3 class="honour-card__title">Second Prize in Shanghai Think Youth Design Competition</h3>
+        <div class="honour-card__date">September 2022</div>
+        <div class="honour-card__desc">
+          Designed a set of interactive digital posters for youth cultural communication, focusing on the integration of
+          traditional Chinese elements and modern digital art. The work was highly recognized for its innovative visual
+          expression and user interaction logic.
+        </div>
+        <div class="certificate-box">
+          <img src="https://picsum.photos/id/28/600/400"
+            alt="Shanghai Think Youth Design Competition 2022 Certificate" />
+        </div>
+      </div>
+
+      <!-- 荣誉2 -->
+      <div class="honour-card">
+        <h3 class="honour-card__title">First Prize in Shanghai University Industry Design Competition</h3>
+        <div class="honour-card__date">November 2023</div>
+        <div class="honour-card__desc">
+          Created a product design scheme for smart home elderly care equipment, combining ergonomics and AI intelligent
+          interaction. The design solved the pain points of elderly care products in practical use and won high praise
+          from the jury.
+        </div>
+        <div class="certificate-box">
+          <img src="https://picsum.photos/id/42/600/400"
+            alt="Shanghai University Industry Design Competition 2023 Certificate" />
+        </div>
+      </div>
+
+      <!-- 荣誉3 -->
+      <div class="honour-card">
+        <h3 class="honour-card__title">First & Second Prize in Shanghai Think Youth Design Competition</h3>
+        <div class="honour-card__date">June 2024</div>
+        <div class="honour-card__desc">
+          Submitted two works: one is an AI-generated visual art series based on urban culture, and the other is a 3D
+          interactive exhibition design. Both works stood out for their forward-looking design concepts and perfect
+          technical implementation.
+        </div>
+        <div class="certificate-box">
+          <img src="https://picsum.photos/id/65/600/400"
+            alt="Shanghai Think Youth Design Competition 2024 Certificate" />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

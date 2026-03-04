@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Dai Yun</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at 0% 0%, #ffe9ff 0, #f7d9ff 30%, #f1c5ff 55%, #e6b2ff 80%, #d79cff 100%);
+      min-height: 100vh;
+      color: #4a2a72;
+      padding: 40px 20px;
+    }
+
+    .portfolio-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 40px;
+      padding: 50px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 18px 40px rgba(126, 81, 167, 0.25);
+      overflow: hidden;
+    }
+
+    .portfolio-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 32px;
+      border: 2px dashed rgba(171, 120, 220, 0.7);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .header-portfolio {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #b352d8;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 50px;
+      row-gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .right-column {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .right-column::before {
+      content: "";
+      position: absolute;
+      right: -200px;
+      bottom: -200px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 20% 20%, #fbe6ff 0, #e89aff 35%, #b45af4 70%, #7b4ded 100%);
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    .about-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #7c3ac9;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e89aff;
+      padding-bottom: 8px;
+    }
+
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      column-gap: 25px;
+      align-items: flex-start;
+    }
+
+    .avatar-box {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(145deg, #fdd0ff, #f4bfff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 5px solid #fff;
+      box-shadow: 0 8px 25px rgba(150, 92, 200, 0.2);
+    }
+
+    .avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(150, 92, 200, 0.18);
+      font-size: 14px;
+      line-height: 1.8;
+      color: #5c4876;
+      position: relative;
+      z-index: 2;
+    }
+
+    .works-section {
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .works-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #7c3ac9;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e89aff;
+      padding-bottom: 8px;
+    }
+
+    .works-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .work-item {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(143, 73, 212, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .work-item:hover {
+      transform: translateY(-8px);
+    }
+
+    .work-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .honours-section {
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sub-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #7c3ac9;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e89aff;
+      padding-bottom: 8px;
+    }
+
+    .honours-list {
+      font-size: 14px;
+      line-height: 2;
+      color: #5c4876;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(150, 92, 200, 0.1);
+    }
+
+    .honours-list div {
+      margin-bottom: 10px;
+    }
+
+    .honours-list div:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-block {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #7c3ac9;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e89aff;
+      padding-bottom: 8px;
+    }
+
+    .internship-item {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(150, 92, 200, 0.1);
+    }
+
+    .internship-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .internship-company {
+      font-size: 15px;
+      font-weight: 700;
+      color: #4a2a72;
+      margin-bottom: 5px;
+    }
+
+    .internship-time-role {
+      font-size: 12px;
+      color: #8b6da7;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .internship-desc {
+      font-size: 13px;
+      color: #5c4876;
+      line-height: 1.7;
+    }
+
+    .skills-pill {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: #ffffff;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(150, 92, 200, 0.1);
+    }
+
+    .skills-pill span {
+      background: linear-gradient(135deg, #c46af0, #9350ea);
+      padding: 8px 15px;
+      border-radius: 999px;
+      box-shadow: 0 6px 15px rgba(143, 73, 212, 0.4);
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .skills-pill span:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(143, 73, 212, 0.5);
+    }
+
+    @media (max-width: 992px) {
+      .portfolio-wrapper {
+        padding: 35px;
+        border-radius: 30px;
+      }
+
+      .header-portfolio {
+        font-size: 48px;
+        margin-bottom: 25px;
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+        row-gap: 40px;
+      }
+
+      .about-section {
+        grid-template-columns: 1fr;
+        row-gap: 25px;
+      }
+
+      .avatar-box {
+        margin: 0 auto;
+      }
+
+      .work-item img {
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .portfolio-wrapper {
+        padding: 25px 20px;
+        border-radius: 20px;
+      }
+
+      .portfolio-wrapper::before {
+        inset: 8px;
+        border-radius: 16px;
+      }
+
+      .header-portfolio {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .works-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .work-item img {
+        height: 160px;
+      }
+
+      .about-title,
+      .works-title,
+      .sub-title,
+      .section-title {
+        font-size: 20px;
+      }
+
+      .about-card,
+      .honours-list,
+      .internship-item,
+      .skills-pill {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="portfolio-wrapper">
+    <div class="header-portfolio">Portfolio</div>
+
+    <div class="main-grid">
+      <div class="left-column">
+        <div class="about-section-wrapper">
+          <div class="about-title">About me</div>
+          <div class="about-section">
+            <div class="avatar-box">
+              <img src="./images/1.jpg" alt="Dai Yun" />
+            </div>
+            <div class="about-card">
+              <p>
+                Hello everyone, I'm Dai Yun. Having studied Product Design at undergraduate level, I am currently
+                pursuing
+                further studies at Hong Kong , focusing on exploring the intersection of artificial intelligence and
+                digital media. I have always been passionate about visual creation and design expression, enjoying the
+                pursuit of balance between technology and artistry, and using creativity and aesthetic sensibility to
+                present distinctive visual languages.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="works-section">
+          <div class="works-title">My Works</div>
+          <div class="works-gallery">
+            <div class="work-item">
+              <img src="https://picsum.photos/id/96/400/300" alt="Design Work 1" />
+            </div>
+            <div class="work-item">
+              <img src="https://picsum.photos/id/175/400/300" alt="Design Work 2" />
+            </div>
+            <div class="work-item">
+              <img src="https://picsum.photos/id/24/400/300" alt="Design Work 3" />
+            </div>
+            <div class="work-item">
+              <img src="https://picsum.photos/id/20/400/300" alt="Design Work 4" />
+            </div>
+          </div>
+        </div>
+
+        <div class="honours-section">
+          <div class="sub-title">Honours and Scholarships</div>
+          <div class="honours-list">
+            <div>Second Prize in Shanghai Think Youth Design Competition (09/2022)</div>
+            <div>First Prize in Shanghai University Industry Design Competition (11/2023)</div>
+            <div>First Prize &amp; Second Prize in Shanghai Think Youth Design Competition (06/2024)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="section-block">
+          <div class="section-title">Internship experiences</div>
+          <div class="internship-item">
+            <div class="internship-company">51Job | Visual Designer</div>
+            <div class="internship-time-role">2024.07 – 2024.08</div>
+            <div class="internship-desc">
+              Utilized AI software such as Midjourney and SD to design character cartoon 3D IP and interfaces.
+            </div>
+          </div>
+          <div class="internship-item">
+            <div class="internship-company">
+              Shanghai Yingfan Neite Advertising Co., Ltd | Design Assistant
+            </div>
+            <div class="internship-time-role">2023.05 – 2023.11</div>
+            <div class="internship-desc">
+              Joined offline curatorial activities, assisted in curatorial design, and enhanced the visual presentation
+              effect of the activities.
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-title">Skills</div>
+          <div class="skills-pill">
+            <span>Photoshop</span>
+            <span>AI</span>
+            <span>Animate</span>
+            <span>3D</span>
+            <span>Figma</span>
+            <span>Rhino</span>
+            <span>Keyshot</span>
+            <span>AIGC</span>
+            <span>SD</span>
+            <span>Midjourney</span>
+            <span>Stable Diffusion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
